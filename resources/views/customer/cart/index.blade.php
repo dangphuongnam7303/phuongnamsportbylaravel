@@ -1,5 +1,8 @@
 @extends('customer.layout.layout')
 @section('content')
+    @if(Session::has('script'))
+        {!! Session::get('script') !!}
+    @endif
     <section class="h-100" style="background-color: #eee;">
         <div class="container h-100 py-5">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -91,13 +94,30 @@
             btnDeleteList.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const productId = btn.getAttribute('data-product-id');
-                    deleteProduct(productId);
+                    showDeleteConfirmation(productId); // Show SweetAlert2 confirmation dialog
                 });
             });
 
+            function showDeleteConfirmation(productId) {
+                // Use SweetAlert2 to show the confirmation dialog
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You are about to delete this product.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true
+                }).then(result => {
+                    if (result.isConfirmed) {
+                        deleteProduct(productId); // Proceed with the deletion
+                    }
+                });
+            }
+
             function deleteProduct(productId) {
                 // Gửi yêu cầu xóa sản phẩm thông qua Ajax
-                fetch('/customer/cart/' + productId, {  // Thêm "/customer" vào đường dẫn tại đây
+                fetch('/customer/cart/' + productId, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -110,13 +130,22 @@
                             window.location.reload();
                         } else {
                             // Nếu có lỗi xảy ra, hiển thị thông báo lỗi
-                            alert('An error occurred while deleting the product.');
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'An error occurred while deleting the product.',
+                                icon: 'error'
+                            });
                         }
                     })
                     .catch(error => {
-                        alert('An error occurred while deleting the product.');
+                        // Handle fetch error
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'An error occurred while deleting the product.',
+                            icon: 'error'
+                        });
                     });
             }
-        })
+        });
     </script>
 @endsection

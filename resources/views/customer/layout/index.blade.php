@@ -19,7 +19,7 @@
                                                 <div class="box_main">
                                                     <h4 style="height: 50px;margin-bottom: 10px" class="shirt_text">{{ $product->name }}</h4>
                                                     <p class="price_text">Price  <span style="color: #262626;">$ {{ $product->price }}</span></p>
-                                                    <div class="tshirt_img"><img width="300px" height="500px" src="{{ asset($product->images->img1) }}"></div>
+                                                    <div class="tshirt_img"><a href="{{route('home.show', $product->id)}}"><img  width="300px" height="500px" src="{{ asset($product->images->img1) }}"></a></div>
                                                     <div class="btn_main">
                                                         <div class="buy_bt">
                                                             <form action="{{route('cart.store')}}" method="POST">
