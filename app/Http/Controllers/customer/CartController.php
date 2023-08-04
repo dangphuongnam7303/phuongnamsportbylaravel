@@ -5,6 +5,8 @@ namespace App\Http\Controllers\customer;
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 class CartController extends Controller
 {
     const OBJECT = 'customer.cart';
@@ -34,7 +36,7 @@ class CartController extends Controller
             ]);
             $cartItem->save();
         }
-
+        Session::flash('success_message', 'Sản phẩm đã được thêm vào giỏ hàng.');
         return back();
     }
 

@@ -100,7 +100,7 @@
                     <a href="electronic.html">Electronic</a>
                     <a href="jewellery.html">Jewellery</a>
                 </div>
-                <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+                <span class="toggle_icon" onclick="openNav()"><img src="{{asset('customer/images/toggle-icon.png')}}"></span>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                     </button>
@@ -146,8 +146,10 @@
                                     <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user" aria-hidden="true"></i>
                                         <span class="padding_10">User</span>
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <strong>{{auth()->user()->role->name}}</strong>
+                                    <div style="padding-left: 30px" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <strong>
+                                            <?= auth()->user()->role->id == 1 ? "<a style='color:#f26522' href='" . route('products.index') . "'> Admin </a>" : "Customer" ?>
+                                        </strong>
                                         <a style="color:#f26522" href="{{route('profile.edit')}}">Information</a>
                                         <form action="{{route('logout')}}" method="post">
                                             @csrf
@@ -217,7 +219,7 @@
 <div class="footer_section layout_padding">
 
     <div class="container">
-        <div class="footer_logo"><a href="{{route('home.index')}}"><img src="images/footer-logo.png"></a></div>
+        <div class="footer_logo"><h1 ><a style="color: #fd7e14" href="{{route('home.index')}}">Phuong Nam SPORT</a></h1></div>
         <div class="input_bt">
             <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
             <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>

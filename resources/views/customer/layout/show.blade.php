@@ -174,20 +174,20 @@
                                         </a>
                                     </div>
                                     @if($product->images->img2)
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="{{asset($product->images->img2)}}"
-                                                 alt="Product Image 2">
-                                        </a>
-                                    </div>
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="{{asset($product->images->img2)}}"
+                                                     alt="Product Image 2">
+                                            </a>
+                                        </div>
                                     @endif
                                     @if($product->images->img3)
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="{{asset($product->images->img3)}}"
-                                                 alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="{{asset($product->images->img3)}}"
+                                                     alt="Product Image 3">
+                                            </a>
+                                        </div>
                                     @endif
 
                                 </div>
@@ -304,8 +304,18 @@
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white mt-2"
                                            href="{{route('home.show', $item->id)}}"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
-                                                class="fas fa-cart-plus"></i></a></li>
+
+                                    <li>
+                                        <form action="{{route('cart.store')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" value="{{$product->id}}" name="product_id">
+                                            <input type="hidden" value="{{ auth()->id() }}" id="user_id" name="user_id">
+                                            <input type="hidden" name="quantity" id="quantity" value="1">
+                                            <button class="btn btn-success text-white mt-2"
+                                                    style="background: none;font-weight: bold; "><i
+                                                    class="fas fa-cart-plus"></i></button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -366,7 +376,8 @@
                     </li>
                     <li>
                         <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:namdpph26892@fpt.edu.vn">namdpph26892@fpt.edu.vn</a>
+                        <a class="text-decoration-none"
+                           href="mailto:namdpph26892@fpt.edu.vn">namdpph26892@fpt.edu.vn</a>
                     </li>
                 </ul>
             </div>
@@ -487,10 +498,10 @@
             }
         ]
     });
-        const varValue = document.getElementById('var-value');
-        const quantityInput = document.getElementById('quantity');
+    const varValue = document.getElementById('var-value');
+    const quantityInput = document.getElementById('quantity');
     console.log(parseInt(varValue.textContent))
-        quantityInput.value = parseInt(varValue.textContent);
+    quantityInput.value = parseInt(varValue.textContent);
 
 </script>
 </body>
