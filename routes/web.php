@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('/users', UserController::class);
         Route::resource('/sizes', SizeController::class);
         Route::resource('/orders', OrderController::class);
+        Route::get('/export-pdf', 'PdfController@exportPdf')->name('export.pdf');
     })->middleware('role:admin');
 
     Route::prefix('customer')->group(function () {

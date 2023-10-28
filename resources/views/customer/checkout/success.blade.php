@@ -8,7 +8,7 @@
             Having trouble? <a href="mailTo: Namdpph26892@fpt.edu.vn">Contact us</a>
         </h2>
         <p class="lead">
-            <a class="btn btn-primary btn-sm" role="button">Continue to homepage</a>
+            <a class="btn btn-primary btn-sm" href="{{route('home.index')}}" role="button">Continue to homepage</a>
         </p>
     </div>
 @endsection

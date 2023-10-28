@@ -12,7 +12,7 @@
 
 
     <!-- site metas -->
-    <title>Eflyer</title>
+    <title>Phuong Nam SPORT</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,9 +41,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <!-- Link CSS của Font Awesome v5 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
 
     <!-- Link JS của Font Awesome v5 (nếu bạn muốn sử dụng các tính năng JavaScript) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
     <style>
         .login_menu .dropdown-menu {
             display: none;
@@ -100,7 +102,7 @@
                     <a href="electronic.html">Electronic</a>
                     <a href="jewellery.html">Jewellery</a>
                 </div>
-                <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png"></span>
+                <span class="toggle_icon" onclick="openNav()"><img src="{{asset('customer/images/toggle-icon.png')}}"></span>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                     </button>
@@ -113,7 +115,7 @@
                 <div class="main">
                     <!-- Another variation with a button -->
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <input type="text" class="form-control" placeholder="Search this product">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
                                 <i class="fa fa-search"></i>
@@ -146,8 +148,10 @@
                                     <a href="#" class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user" aria-hidden="true"></i>
                                         <span class="padding_10">User</span>
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <strong>{{auth()->user()->role->name}}</strong>
+                                    <div style="padding-left: 30px" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <strong>
+                                            <?= auth()->user()->role->id == 1 ? "<a style='color:#f26522' href='" . route('products.index') . "'> Admin </a>" : "Customer" ?>
+                                        </strong>
                                         <a style="color:#f26522" href="{{route('profile.edit')}}">Information</a>
                                         <form action="{{route('logout')}}" method="post">
                                             @csrf
@@ -217,7 +221,7 @@
 <div class="footer_section layout_padding">
 
     <div class="container">
-        <div class="footer_logo"><a href="{{route('home.index')}}"><img src="images/footer-logo.png"></a></div>
+        <div class="footer_logo"><h1 ><a style="color: #fd7e14" href="{{route('home.index')}}">Phuong Nam SPORT</a></h1></div>
         <div class="input_bt">
             <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
             <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
@@ -302,5 +306,9 @@
     });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+
+
 </body>
 </html>

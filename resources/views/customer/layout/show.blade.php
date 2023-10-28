@@ -107,12 +107,12 @@
                 <a class="nav-icon position-relative text-decoration-none" href="{{route('cart.index',auth()->id())}}">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                 </a>
                 <a class="nav-icon position-relative text-decoration-none" href="#">
                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
                     <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                 </a>
             </div>
         </div>
@@ -174,20 +174,20 @@
                                         </a>
                                     </div>
                                     @if($product->images->img2)
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="{{asset($product->images->img2)}}"
-                                                 alt="Product Image 2">
-                                        </a>
-                                    </div>
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="{{asset($product->images->img2)}}"
+                                                     alt="Product Image 2">
+                                            </a>
+                                        </div>
                                     @endif
                                     @if($product->images->img3)
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="{{asset($product->images->img3)}}"
-                                                 alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="{{asset($product->images->img3)}}"
+                                                     alt="Product Image 3">
+                                            </a>
+                                        </div>
                                     @endif
 
                                 </div>
@@ -304,14 +304,26 @@
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white mt-2"
                                            href="{{route('home.show', $item->id)}}"><i class="far fa-eye"></i></a></li>
-                                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
-                                                class="fas fa-cart-plus"></i></a></li>
+
+                                    <li>
+                                        <form action="{{route('cart.store')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" value="{{$product->id}}" name="product_id">
+                                            <input type="hidden" value="{{ auth()->id() }}" id="user_id" name="user_id">
+                                            <input type="hidden" name="quantity" id="quantity" value="1">
+                                            <button type="submit" class="btn btn-success text-white mt-2"
+                                                    style="background: none;font-weight: bold; "><i
+                                                    class="fas fa-cart-plus"></i></button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body">
+                            <div style="height: 50px;">
                             <a href="{{route('home.show', $item->id)}}"
                                class="h3 text-decoration-none"><strong>{{$item->name}}</strong></a>
+                            </div>
                             <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                 <li>Size: {{$item->size->name}}</li>
                                 <li class="pt-2">
@@ -366,7 +378,8 @@
                     </li>
                     <li>
                         <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:namdpph26892@fpt.edu.vn">namdpph26892@fpt.edu.vn</a>
+                        <a class="text-decoration-none"
+                           href="mailto:namdpph26892@fpt.edu.vn">namdpph26892@fpt.edu.vn</a>
                     </li>
                 </ul>
             </div>
@@ -487,10 +500,10 @@
             }
         ]
     });
-        const varValue = document.getElementById('var-value');
-        const quantityInput = document.getElementById('quantity');
+    const varValue = document.getElementById('var-value');
+    const quantityInput = document.getElementById('quantity');
     console.log(parseInt(varValue.textContent))
-        quantityInput.value = parseInt(varValue.textContent);
+    quantityInput.value = parseInt(varValue.textContent);
 
 </script>
 </body>
