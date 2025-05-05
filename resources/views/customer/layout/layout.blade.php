@@ -12,7 +12,7 @@
 
 
     <!-- site metas -->
-    <title>Eflyer</title>
+    <title>Phuong Nam SPORT</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,9 +41,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <!-- Link CSS của Font Awesome v5 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
 
     <!-- Link JS của Font Awesome v5 (nếu bạn muốn sử dụng các tính năng JavaScript) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
     <style>
         .login_menu .dropdown-menu {
             display: none;
@@ -113,7 +115,7 @@
                 <div class="main">
                     <!-- Another variation with a button -->
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search this blog">
+                        <input type="text" class="form-control" placeholder="Search this product">
                         <div class="input-group-append">
                             <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
                                 <i class="fa fa-search"></i>
@@ -304,5 +306,9 @@
     });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+
+
 </body>
 </html>

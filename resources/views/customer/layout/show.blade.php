@@ -107,12 +107,12 @@
                 <a class="nav-icon position-relative text-decoration-none" href="{{route('cart.index',auth()->id())}}">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                 </a>
                 <a class="nav-icon position-relative text-decoration-none" href="#">
                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
                     <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                 </a>
             </div>
         </div>
@@ -311,7 +311,7 @@
                                             <input type="hidden" value="{{$product->id}}" name="product_id">
                                             <input type="hidden" value="{{ auth()->id() }}" id="user_id" name="user_id">
                                             <input type="hidden" name="quantity" id="quantity" value="1">
-                                            <button class="btn btn-success text-white mt-2"
+                                            <button type="submit" class="btn btn-success text-white mt-2"
                                                     style="background: none;font-weight: bold; "><i
                                                     class="fas fa-cart-plus"></i></button>
                                         </form>
@@ -320,8 +320,10 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <div style="height: 50px;">
                             <a href="{{route('home.show', $item->id)}}"
                                class="h3 text-decoration-none"><strong>{{$item->name}}</strong></a>
+                            </div>
                             <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                 <li>Size: {{$item->size->name}}</li>
                                 <li class="pt-2">
